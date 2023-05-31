@@ -104,7 +104,8 @@ function Navbar({ activePage, handlePageClick }) {
             className={activePage === 'home' ? 'active' : ''}
             onClick={() => handlePageClick('home')}
           >
-            home{activePage === 'home' ? '✦' : ''}
+            <span className="navbar-title">home</span>
+            {activePage === 'home' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
         <li>
@@ -113,7 +114,8 @@ function Navbar({ activePage, handlePageClick }) {
             className={activePage === 'discography' ? 'active' : ''}
             onClick={() => handlePageClick('discography')}
           >
-            discography{activePage === 'discography' ? '✦' : ''}
+            <span className="navbar-title">discography</span>
+            {activePage === 'discography' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
         <li>
@@ -122,7 +124,8 @@ function Navbar({ activePage, handlePageClick }) {
             className={activePage === 'beats' ? 'active' : ''}
             onClick={() => handlePageClick('beats')}
           >
-            beats{activePage === 'beats' ? '✦' : ''}
+            <span className="navbar-title">beats</span>
+            {activePage === 'beats' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
         <li>
@@ -131,7 +134,8 @@ function Navbar({ activePage, handlePageClick }) {
             className={activePage === 'contact' ? 'active' : ''}
             onClick={() => handlePageClick('contact')}
           >
-            contact{activePage === 'contact' ? '✦' : ''}
+            <span className="navbar-title">contact</span>
+            {activePage === 'contact' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
       </ul>
