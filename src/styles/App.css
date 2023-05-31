@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #282c34;
+  background-color: #232323;
 }
 
 .App {
@@ -48,7 +48,6 @@ body {
 
 /* Main container */
 .container {
-  background-color: #282c34;
   color: white;
   display: flex;
   max-width: 90vw;
@@ -70,6 +69,7 @@ body {
 h1 {
   font-family: 'Benzin Bold';
   src: url('../fonts/Benzin Bold.ttf') format('truetype');
+  font-size: 3rem;
 }
 
 #home,
