@@ -1,5 +1,8 @@
 * {
   text-transform: lowercase;
+}
+
+body {
   background-color: #282c34;
 }
 
@@ -73,7 +76,8 @@ h1 {
 #discography,
 #beats,
 #contact {
-  padding-top: 60px; /* Adjust the value as needed */
+  padding-top: 20px;
+  /* Adjust the value as needed */
 }
 
 .section {
