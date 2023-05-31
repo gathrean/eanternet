@@ -44,69 +44,69 @@ function App() {
       block: 'start',
       inline: 'nearest',
     });
-
-    window.scrollBy(0, -120);
   };
 
   return (
-    <div>
+    <div className="container">
       <Navbar activePage={activePage} handlePageClick={handlePageClick} />
-      <section ref={homeRef}>
-        <Home />
-      </section>
-      <section ref={discographyRef}>
-        <Discography />
-      </section>
-      <section ref={beatsRef}>
-        <Beats />
-      </section>
-      <section ref={contactRef}>
-        <Contact />
-      </section>
+      <div className="content">
+        <div className="section" ref={homeRef}>
+          <Home />
+        </div>
+        <div className="section" ref={discographyRef}>
+          <Discography />
+        </div>
+        <div className="section" ref={beatsRef}>
+          <Beats />
+        </div>
+        <div className="section" ref={contactRef}>
+          <Contact />
+        </div>
+      </div>
     </div>
   );
 }
 
 function Navbar({ activePage, handlePageClick }) {
   return (
-    <nav className="navbar benzin-font navbar-fixed">
+    <nav className="navbar benzin-font">
       <img className="navbar-logo" src="ean star text.png" alt="Ean Star Text" />
 
       <ul className="navbar-links">
         <li>
           <a
             href="#home"
-            className={activePage === 'home' ? 'active' : ''}
+            className={activePage === 'home' ? 'active' : ' '}
             onClick={() => handlePageClick('home')}
           >
-            home{activePage === 'home' ? '✦' : ''}
+            home{activePage === 'home' ? '✦' : ' '}
           </a>
         </li>
         <li>
           <a
             href="#discography"
-            className={activePage === 'discography' ? 'active' : ''}
+            className={activePage === 'discography' ? 'active' : ' '}
             onClick={() => handlePageClick('discography')}
           >
-            discography{activePage === 'discography' ? '✦' : ''}
+            discography{activePage === 'discography' ? '✦' : ' '}
           </a>
         </li>
         <li>
           <a
             href="#beats"
-            className={activePage === 'beats' ? 'active' : ''}
+            className={activePage === 'beats' ? 'active' : ' '}
             onClick={() => handlePageClick('beats')}
           >
-            beats{activePage === 'beats' ? '✦' : ''}
+            beats{activePage === 'beats' ? '✦' : ' '}
           </a>
         </li>
         <li>
           <a
             href="#contact"
-            className={activePage === 'contact' ? 'active' : ''}
+            className={activePage === 'contact' ? 'active' : ' '}
             onClick={() => handlePageClick('contact')}
           >
-            contact{activePage === 'contact' ? '✦' : ''}
+            contact{activePage === 'contact' ? '✦' : ' '}
           </a>
         </li>
       </ul>

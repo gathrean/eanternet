@@ -3,7 +3,7 @@ import React from 'react';
 function Home() {
   return (
     <div id="home">
-      <h1>Welcome to the Home Page!</h1>
+      <h1>home</h1>
       <p>
       This is a sample text for home. <br></br>
         This is a sample text for home. <br></br>
