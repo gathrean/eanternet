@@ -1,3 +1,11 @@
+* {
+  text-transform: lowercase;
+}
+
+body {
+  background-color: #232323;
+}
+
 .App {
   text-align: center;
 }
@@ -40,11 +48,9 @@
 
 /* Main container */
 .container {
-  background-color: #282c34;
   color: white;
   display: flex;
   max-width: 90vw;
-  border-radius: 50px;
   margin: 0 auto;
   padding: 2rem;
   flex-direction: column;
@@ -60,10 +66,21 @@
   font-family: 'Benzin Bold', sans-serif;
 }
 
+h1 {
+  font-family: 'Benzin Bold';
+  src: url('../fonts/Benzin Bold.ttf') format('truetype');
+  font-size: 3rem;
+}
+
 #home,
 #discography,
 #beats,
 #contact {
-  margin-top: 120px;
+  padding-top: 20px;
   /* Adjust the value as needed */
+}
+
+.section {
+  scroll-behavior: smooth;
+  transition-duration: 5s;
 }

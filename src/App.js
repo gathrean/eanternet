@@ -1,16 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './fonts/Benzin Bold.ttf';
 import './styles/App.css';
 
 // Pages
-import Home from './pages/Home';
+import About from './pages/About';
 import Discography from './pages/Discography';
 import Beats from './pages/Beats';
 import Contact from './pages/Contact';
 
 function App() {
-  const [activePage, setActivePage] = useState('home');
-  const homeRef = useRef(null);
+  const [activePage, setActivePage] = useState('about');
+  const aboutRef = useRef(null);
   const discographyRef = useRef(null);
   const beatsRef = useRef(null);
   const contactRef = useRef(null);
@@ -23,8 +23,8 @@ function App() {
   const scrollToSection = (section) => {
     let ref;
     switch (section) {
-      case 'home':
-        ref = homeRef;
+      case 'about':
+        ref = aboutRef;
         break;
       case 'discography':
         ref = discographyRef;
@@ -36,7 +36,7 @@ function App() {
         ref = contactRef;
         break;
       default:
-        ref = homeRef;
+        ref = aboutRef;
         break;
     }
     ref.current.scrollIntoView({
@@ -44,51 +44,68 @@ function App() {
       block: 'start',
       inline: 'nearest',
     });
-
-    window.scrollBy(0, -120);
   };
 
+  useEffect(() => {
+    const observerOptions = {
+      rootMargin: '-100px 0px -100px 0px', // Adjust the root margin as needed
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActivePage(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    observer.observe(aboutRef.current);
+    observer.observe(discographyRef.current);
+    observer.observe(beatsRef.current);
+    observer.observe(contactRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="container">
       <Navbar activePage={activePage} handlePageClick={handlePageClick} />
-      <section ref={homeRef}>
-        <Home />
-      </section>
-      <section ref={discographyRef}>
-        <Discography />
-      </section>
-      <section ref={beatsRef}>
-        <Beats />
-      </section>
-      <section ref={contactRef}>
-        <Contact />
-      </section>
+      <div className="content">
+        <div className="section" ref={aboutRef} id="about">
+          <About />
+        </div>
+        <div className="section" ref={beatsRef} id="beats">
+          <Beats />
+        </div>
+        <div className="section" ref={contactRef} id="contact">
+          <Contact />
+        </div>
+        <div className="section" ref={discographyRef} id="discography">
+          <Discography />
+        </div>
+      </div>
     </div>
   );
 }
 
 function Navbar({ activePage, handlePageClick }) {
   return (
-    <nav className="navbar benzin-font navbar-fixed">
+    <nav className="navbar benzin-font">
       <img className="navbar-logo" src="ean star text.png" alt="Ean Star Text" />
 
       <ul className="navbar-links">
         <li>
           <a
-            href="#home"
-            className={activePage === 'home' ? 'active' : ''}
-            onClick={() => handlePageClick('home')}
+            href="#about"
+            className={activePage === 'about' ? 'active' : ''}
+            onClick={() => handlePageClick('about')}
           >
-            home{activePage === 'home' ? '✦' : ''}
-          </a>
-        </li>
-        <li>
-          <a
-            href="#discography"
-            className={activePage === 'discography' ? 'active' : ''}
-            onClick={() => handlePageClick('discography')}
-          >
-            discography{activePage === 'discography' ? '✦' : ''}
+            <span className="navbar-title">about</span>
+            {activePage === 'about' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
         <li>
@@ -97,7 +114,8 @@ function Navbar({ activePage, handlePageClick }) {
             className={activePage === 'beats' ? 'active' : ''}
             onClick={() => handlePageClick('beats')}
           >
-            beats{activePage === 'beats' ? '✦' : ''}
+            <span className="navbar-title">beats</span>
+            {activePage === 'beats' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
         <li>
@@ -106,7 +124,18 @@ function Navbar({ activePage, handlePageClick }) {
             className={activePage === 'contact' ? 'active' : ''}
             onClick={() => handlePageClick('contact')}
           >
-            contact{activePage === 'contact' ? '✦' : ''}
+            <span className="navbar-title">contact</span>
+            {activePage === 'contact' && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+        <li>
+          <a
+            href="#discography"
+            className={activePage === 'discography' ? 'active' : ''}
+            onClick={() => handlePageClick('discography')}
+          >
+            <span className="navbar-title">discography</span>
+            {activePage === 'discography' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
       </ul>
