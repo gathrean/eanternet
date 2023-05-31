@@ -59,3 +59,11 @@
 .benzin-font {
   font-family: 'Benzin Bold', sans-serif;
 }
+
+#home,
+#discography,
+#beats,
+#contact {
+  margin-top: 120px;
+  /* Adjust the value as needed */
+}

@@ -1,24 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './fonts/Benzin Bold.ttf';
 import './styles/App.css';
 
-function Navbar() {
-  // Use state to track the active page
-  const [activePage, setActivePage] = useState('home');
+// Pages
+import Home from './pages/Home';
+import Discography from './pages/Discography';
+import Beats from './pages/Beats';
+import Contact from './pages/Contact';
 
-  // Function to handle click event and update active page
+function App() {
+  const [activePage, setActivePage] = useState('home');
+  const homeRef = useRef(null);
+  const discographyRef = useRef(null);
+  const beatsRef = useRef(null);
+  const contactRef = useRef(null);
+
   const handlePageClick = (page) => {
     setActivePage(page);
+    scrollToSection(page);
+  };
+
+  const scrollToSection = (section) => {
+    let ref;
+    switch (section) {
+      case 'home':
+        ref = homeRef;
+        break;
+      case 'discography':
+        ref = discographyRef;
+        break;
+      case 'beats':
+        ref = beatsRef;
+        break;
+      case 'contact':
+        ref = contactRef;
+        break;
+      default:
+        ref = homeRef;
+        break;
+    }
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+
+    window.scrollBy(0, -120);
   };
 
   return (
-    <nav className="navbar benzin-font">
+    <div>
+      <Navbar activePage={activePage} handlePageClick={handlePageClick} />
+      <section ref={homeRef}>
+        <Home />
+      </section>
+      <section ref={discographyRef}>
+        <Discography />
+      </section>
+      <section ref={beatsRef}>
+        <Beats />
+      </section>
+      <section ref={contactRef}>
+        <Contact />
+      </section>
+    </div>
+  );
+}
+
+function Navbar({ activePage, handlePageClick }) {
+  return (
+    <nav className="navbar benzin-font navbar-fixed">
       <img className="navbar-logo" src="ean star text.png" alt="Ean Star Text" />
 
       <ul className="navbar-links">
         <li>
           <a
-            href="#"
+            href="#home"
             className={activePage === 'home' ? 'active' : ''}
             onClick={() => handlePageClick('home')}
           >
@@ -27,7 +84,7 @@ function Navbar() {
         </li>
         <li>
           <a
-            href="#"
+            href="#discography"
             className={activePage === 'discography' ? 'active' : ''}
             onClick={() => handlePageClick('discography')}
           >
@@ -36,7 +93,7 @@ function Navbar() {
         </li>
         <li>
           <a
-            href="#"
+            href="#beats"
             className={activePage === 'beats' ? 'active' : ''}
             onClick={() => handlePageClick('beats')}
           >
@@ -45,7 +102,7 @@ function Navbar() {
         </li>
         <li>
           <a
-            href="#"
+            href="#contact"
             className={activePage === 'contact' ? 'active' : ''}
             onClick={() => handlePageClick('contact')}
           >
@@ -57,4 +114,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default App;
