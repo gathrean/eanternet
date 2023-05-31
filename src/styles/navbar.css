@@ -1,0 +1,61 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #282c34;
+    color: #ffffff;
+    padding: 1rem;
+    height: auto;
+}
+
+.navbar-logo {
+    width: 80px;
+}
+
+.navbar-links {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.navbar-links li {
+    margin-right: 1rem;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar-links a.active {
+    text-decoration: none;
+    /* Remove the default underline */
+
+    position: relative;
+    /* Set position to relative */
+}
+
+.navbar-links a.active::after {
+    content: '';
+    /* Create a pseudo-element */
+
+    position: absolute;
+    /* Set position to absolute */
+
+    bottom: -2px;
+    /* Adjust the distance of the underline from the text */
+
+    left: 0;
+    /* Align the underline with the link */
+
+    width: 100%;
+    /* Set the width to cover the link */
+
+    height: 3px;
+    /* Set the height of the underline */
+
+    margin: -2px 0px;
+
+    background-color: rgb(255, 255, 255);
+    /* Customize the color of the underline */
+}
