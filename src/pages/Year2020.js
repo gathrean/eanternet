@@ -5,24 +5,86 @@ function Year2020() {
         <div id="year-2020">
             <h1>2020</h1>
             <p>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
-                This is the year 2020. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
+                This is a sample text for discography. <br></br>
             </p>
         </div>
     );

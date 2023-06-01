@@ -4,9 +4,9 @@ import './styles/App.css';
 
 // Pages
 import About from './pages/About';
-import Discography from './pages/Discography';
 import Beats from './pages/Beats';
 import Contact from './pages/Contact';
+import Discography from './pages/Discography';
 
 // Year pages
 import Year2021 from './pages/Year2021';
@@ -19,15 +19,29 @@ import Year2015 from './pages/Year2015';
 
 function App() {
   const [activePage, setActivePage] = useState('about');
+  const [activeYear, setActiveYear] = useState(null);  
   const aboutRef = useRef(null);
   const discographyRef = useRef(null);
   const beatsRef = useRef(null);
   const contactRef = useRef(null);
 
+  const year2021Ref = useRef(null);
+  const year2020Ref = useRef(null);
+  const year2019Ref = useRef(null);
+  const year2018Ref = useRef(null);
+  const year2017Ref = useRef(null);
+  const year2016Ref = useRef(null);
+  const year2015Ref = useRef(null);
+
   const handlePageClick = (page) => {
     setActivePage(page);
+    if (page.startsWith('year-')) {
+      setActiveYear(page);
+    } else {
+      setActiveYear(null);
+    }
     scrollToSection(page);
-  };
+  };  
 
   const scrollToSection = (section) => {
     let ref;
@@ -35,14 +49,35 @@ function App() {
       case 'about':
         ref = aboutRef;
         break;
-      case 'discography':
-        ref = discographyRef;
-        break;
       case 'beats':
         ref = beatsRef;
         break;
       case 'contact':
         ref = contactRef;
+        break;
+      case 'discography':
+        ref = discographyRef;
+        break;
+      case 'year-2021':
+        ref = year2021Ref;
+        break;
+      case 'year-2020':
+        ref = year2020Ref;
+        break;
+      case 'year-2019':
+        ref = year2019Ref;
+        break;
+      case 'year-2018':
+        ref = year2018Ref;
+        break;
+      case 'year-2017':
+        ref = year2017Ref;
+        break;
+      case 'year-2016':
+        ref = year2016Ref;
+        break;
+      case 'year-2015':
+        ref = year2015Ref;
         break;
       default:
         ref = aboutRef;
@@ -74,6 +109,13 @@ function App() {
     observer.observe(discographyRef.current);
     observer.observe(beatsRef.current);
     observer.observe(contactRef.current);
+    observer.observe(year2021Ref.current);
+    observer.observe(year2020Ref.current);
+    observer.observe(year2019Ref.current);
+    observer.observe(year2018Ref.current);
+    observer.observe(year2017Ref.current);
+    observer.observe(year2016Ref.current);
+    observer.observe(year2015Ref.current);
 
     return () => {
       observer.disconnect();
@@ -95,41 +137,42 @@ function App() {
         </div>
         <div className="section" ref={discographyRef} id="discography">
           <Discography />
-          {activePage === 'discography' && (
-            <>
-              <Year2021 activePage={activePage} handlePageClick={handlePageClick} />
-              <Year2020 activePage={activePage} handlePageClick={handlePageClick} />
-              <Year2019 activePage={activePage} handlePageClick={handlePageClick} />
-              <Year2018 activePage={activePage} handlePageClick={handlePageClick} />
-              <Year2017 activePage={activePage} handlePageClick={handlePageClick} />
-              <Year2016 activePage={activePage} handlePageClick={handlePageClick} />
-              <Year2015 activePage={activePage} handlePageClick={handlePageClick} />
-            </>
-          )}
+        </div>
+        <div className="section" ref={year2021Ref} id="year-2021">
+          <Year2021 />
+        </div>
+        <div className="section" ref={year2020Ref} id="year-2020">
+          <Year2020 />
+        </div>
+        <div className="section" ref={year2019Ref} id="year-2019">
+          <Year2019 />
+        </div>
+        <div className="section" ref={year2018Ref} id="year-2018">
+          <Year2018 />
+        </div>
+        <div className="section" ref={year2017Ref} id="year-2017">
+          <Year2017 />
+        </div>
+        <div className="section" ref={year2016Ref} id="year-2016">
+          <Year2016 />
+        </div>
+        <div className="section" ref={year2015Ref} id="year-2015">
+          <Year2015 />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
 function Navbar({ activePage, handlePageClick }) {
-  const handleYearClick = (year) => {
-    const sectionId = `year-${year}`;
-    const sectionRef = document.getElementById(sectionId);
-    if (sectionRef) {
-      sectionRef.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
-    }
-  };  
 
   return (
     <nav className="navbar benzin-font">
       <img className="navbar-logo" src="ean star text.png" alt="Ean Star Text" />
 
       <ul className="navbar-links">
+
+        {/* About */}
         <li>
           <a
             href="#about"
@@ -140,6 +183,8 @@ function Navbar({ activePage, handlePageClick }) {
             {activePage === 'about' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
+
+        {/* Beats */}
         <li>
           <a
             href="#beats"
@@ -150,6 +195,8 @@ function Navbar({ activePage, handlePageClick }) {
             {activePage === 'beats' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
+
+        {/* Contact */}
         <li>
           <a
             href="#contact"
@@ -160,6 +207,8 @@ function Navbar({ activePage, handlePageClick }) {
             {activePage === 'contact' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
+
+        {/* Discography */}
         <li>
           <a
             href="#discography"
@@ -170,73 +219,92 @@ function Navbar({ activePage, handlePageClick }) {
             {activePage === 'discography' && <span className="navbar-symbol">✦</span>}
           </a>
         </li>
-        {activePage === 'discography' && (
-          <>
-            <li>
-              <a
-                href="#year-2021"
-                className={activePage === 'year-2021' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2021')}
-              >
-                <span className="navbar-title">2021</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#year-2020"
-                className={activePage === 'year-2020' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2020')}
-              >
-                <span className="navbar-title">2020</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#year-2019"
-                className={activePage === 'year-2019' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2019')}
-              >
-                <span className="navbar-title">2019</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#year-2018"
-                className={activePage === 'year-2018' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2018')}
-              >
-                <span className="navbar-title">2018</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#year-2017"
-                className={activePage === 'year-2017' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2017')}
-              >
-                <span className="navbar-title">2017</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#year-2016"
-                className={activePage === 'year-2016' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2016')}
-              >
-                <span className="navbar-title">2016</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#year-2015"
-                className={activePage === 'year-2015' ? 'active' : ''}
-                onClick={() => handleYearClick('year-2015')}
-              >
-                <span className="navbar-title">2015</span>
-              </a>
-            </li>
-          </>
-        )}
+
+        {/* 2021 */}
+        <li>
+          <a
+            href="#year-2021"
+            className={activePage === 'year-2021' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2021')}
+          >
+            <span className="navbar-title">2021</span>
+            {(activePage === 'year-2021') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+        {/* 2020 */}
+        <li>
+          <a
+            href="#year-2020"
+            className={activePage === 'year-2020' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2020')}
+          >
+            <span className="navbar-title">2020</span>
+            {(activePage === 'year-2020') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+        {/* 2019 */}
+        <li>
+          <a
+            href="#year-2019"
+            className={activePage === 'year-2019' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2019')}
+          >
+            <span className="navbar-title">2019</span>
+            {(activePage === 'year-2019') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+        {/* 2018 */}
+        <li>
+          <a
+            href="#year-2018"
+            className={activePage === 'year-2018' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2018')}
+          >
+            <span className="navbar-title">2018</span>
+            {(activePage === 'year-2018') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+        {/* 2017 */}
+        <li>
+          <a
+            href="#year-2017"
+            className={activePage === 'year-2017' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2017')}
+          >
+            <span className="navbar-title">2017</span>
+            {(activePage === 'year-2017') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+        {/* 2016 */}
+        <li>
+          <a
+            href="#year-2016"
+            className={activePage === 'year-2016' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2016')}
+          >
+            <span className="navbar-title">2016</span>
+            {(activePage === 'year-2016') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+
+        <li>
+          <a
+            href="#year-2015"
+            className={activePage === 'year-2015' ? 'active' : ''}
+            onClick={() => handlePageClick('year-2015')}
+          >
+            <span className="navbar-title">2015</span>
+            {(activePage === 'year-2015') && <span className="navbar-symbol">✦</span>}
+          </a>
+        </li>
+
+
       </ul>
     </nav>
   );
