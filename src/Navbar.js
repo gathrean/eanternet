@@ -31,11 +31,11 @@ function Navbar({ activePage, handlePageClick }) {
             <li key={link.page}>
               <a
                 href={`#${link.page}`}
-                className={activePage === link.page ? 'active' : ''}
+                className={(activePage === link.page || (isYearPage && link.page === 'discography')) ? 'active' : ''}
                 onClick={() => handlePageClick(link.page)}
               >
                 <span className="navbar-title">{link.title}</span>
-                {activePage === link.page && <span className="navbar-symbol">✦</span>}
+                {(activePage === link.page || (isYearPage && link.page === 'discography')) && <span className="navbar-symbol">✦</span>}
               </a>
             </li>
           );
