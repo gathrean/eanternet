@@ -36,6 +36,7 @@ function App() {
   const year2016Ref = useRef(null);
   const year2015Ref = useRef(null);
 
+  // Handle click on a page link in the navbar
   const handlePageClick = (page) => {
     setActivePage(page);
     if (page.startsWith('year-')) {
@@ -46,6 +47,7 @@ function App() {
     scrollToSection(page);
   };
 
+  // Scroll to a section by its id
   const scrollToSection = (section) => {
     const ref = sectionRefs[section] || aboutRef;
     ref.current.scrollIntoView({
@@ -55,6 +57,7 @@ function App() {
     });
   };
 
+  // Map the section refs to their ids
   const sectionRefs = {
     about: aboutRef,
     beats: beatsRef,
@@ -69,11 +72,13 @@ function App() {
     'year-2015': year2015Ref,
   };
 
+  // Set the active page based on the section that is in view
   useEffect(() => {
     const observerOptions = {
-      rootMargin: '-100px 0px -100px 0px', // Adjust the root margin as needed
+      rootMargin: '-100px 0px -100px 0px',
     };
 
+    // Handle intersection of a section with the viewport
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -82,8 +87,10 @@ function App() {
       });
     };
 
+    // Create an intersection observer instance
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
+    // Observe the section refs
     observer.observe(aboutRef.current);
     observer.observe(discographyRef.current);
     observer.observe(beatsRef.current);
@@ -102,6 +109,8 @@ function App() {
   }, []);
 
   return (
+
+    // The navbar and the content
     <div className="container">
       <Navbar activePage={activePage} handlePageClick={handlePageClick} />
       <div className="content">
