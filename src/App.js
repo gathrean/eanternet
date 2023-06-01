@@ -46,6 +46,15 @@ function App() {
     scrollToSection(page);
   };
 
+  const scrollToSection = (section) => {
+    const ref = sectionRefs[section] || aboutRef;
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  };
+
   const sectionRefs = {
     about: aboutRef,
     beats: beatsRef,
@@ -58,15 +67,6 @@ function App() {
     'year-2017': year2017Ref,
     'year-2016': year2016Ref,
     'year-2015': year2015Ref,
-  };
-
-  const scrollToSection = (section) => {
-    const ref = sectionRefs[section] || aboutRef;
-    ref.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'nearest',
-    });
   };
 
   useEffect(() => {
@@ -139,10 +139,8 @@ function App() {
           <Year2015 />
         </div>
       </div>
-    </div >
+    </div>
   );
 }
-
-
 
 export default App;
