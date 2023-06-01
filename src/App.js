@@ -22,7 +22,7 @@ import Year2015 from './pages/Year2015';
 
 function App() {
   const [activePage, setActivePage] = useState('about');
-  const [activeYear, setActiveYear] = useState(null);  
+  const [activeYear, setActiveYear] = useState(null);
   const aboutRef = useRef(null);
   const discographyRef = useRef(null);
   const beatsRef = useRef(null);
@@ -44,48 +44,24 @@ function App() {
       setActiveYear(null);
     }
     scrollToSection(page);
-  };  
+  };
+
+  const sectionRefs = {
+    about: aboutRef,
+    beats: beatsRef,
+    contact: contactRef,
+    discography: discographyRef,
+    'year-2021': year2021Ref,
+    'year-2020': year2020Ref,
+    'year-2019': year2019Ref,
+    'year-2018': year2018Ref,
+    'year-2017': year2017Ref,
+    'year-2016': year2016Ref,
+    'year-2015': year2015Ref,
+  };
 
   const scrollToSection = (section) => {
-    let ref;
-    switch (section) {
-      case 'about':
-        ref = aboutRef;
-        break;
-      case 'beats':
-        ref = beatsRef;
-        break;
-      case 'contact':
-        ref = contactRef;
-        break;
-      case 'discography':
-        ref = discographyRef;
-        break;
-      case 'year-2021':
-        ref = year2021Ref;
-        break;
-      case 'year-2020':
-        ref = year2020Ref;
-        break;
-      case 'year-2019':
-        ref = year2019Ref;
-        break;
-      case 'year-2018':
-        ref = year2018Ref;
-        break;
-      case 'year-2017':
-        ref = year2017Ref;
-        break;
-      case 'year-2016':
-        ref = year2016Ref;
-        break;
-      case 'year-2015':
-        ref = year2015Ref;
-        break;
-      default:
-        ref = aboutRef;
-        break;
-    }
+    const ref = sectionRefs[section] || aboutRef;
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
