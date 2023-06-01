@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './fonts/Benzin Bold.ttf';
 import './styles/App.css';
 
@@ -20,21 +20,26 @@ import Year2017 from './pages/Year2017';
 import Year2016 from './pages/Year2016';
 import Year2015 from './pages/Year2015';
 
+const sectionRefs = {};
+
 function App() {
   const [activePage, setActivePage] = useState('about');
   const [activeYear, setActiveYear] = useState(null);
-  const aboutRef = useRef(null);
-  const discographyRef = useRef(null);
-  const beatsRef = useRef(null);
-  const contactRef = useRef(null);
 
-  const year2021Ref = useRef(null);
-  const year2020Ref = useRef(null);
-  const year2019Ref = useRef(null);
-  const year2018Ref = useRef(null);
-  const year2017Ref = useRef(null);
-  const year2016Ref = useRef(null);
-  const year2015Ref = useRef(null);
+  // Define section data
+  const sections = [
+    { id: 'about', component: <About /> },
+    { id: 'beats', component: <Beats /> },
+    { id: 'contact', component: <Contact /> },
+    { id: 'discography', component: <Discography /> },
+    { id: 'year-2021', component: <Year2021 /> },
+    { id: 'year-2020', component: <Year2020 /> },
+    { id: 'year-2019', component: <Year2019 /> },
+    { id: 'year-2018', component: <Year2018 /> },
+    { id: 'year-2017', component: <Year2017 /> },
+    { id: 'year-2016', component: <Year2016 /> },
+    { id: 'year-2015', component: <Year2015 /> },
+  ];
 
   // Handle click on a page link in the navbar
   const handlePageClick = (page) => {
@@ -49,27 +54,12 @@ function App() {
 
   // Scroll to a section by its id
   const scrollToSection = (section) => {
-    const ref = sectionRefs[section] || aboutRef;
-    ref.current.scrollIntoView({
+    const ref = sectionRefs[section] || sectionRefs.about;
+    ref.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
       inline: 'nearest',
     });
-  };
-
-  // Map the section refs to their ids
-  const sectionRefs = {
-    about: aboutRef,
-    beats: beatsRef,
-    contact: contactRef,
-    discography: discographyRef,
-    'year-2021': year2021Ref,
-    'year-2020': year2020Ref,
-    'year-2019': year2019Ref,
-    'year-2018': year2018Ref,
-    'year-2017': year2017Ref,
-    'year-2016': year2016Ref,
-    'year-2015': year2015Ref,
   };
 
   // Set the active page based on the section that is in view
@@ -91,17 +81,10 @@ function App() {
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
     // Observe the section refs
-    observer.observe(aboutRef.current);
-    observer.observe(discographyRef.current);
-    observer.observe(beatsRef.current);
-    observer.observe(contactRef.current);
-    observer.observe(year2021Ref.current);
-    observer.observe(year2020Ref.current);
-    observer.observe(year2019Ref.current);
-    observer.observe(year2018Ref.current);
-    observer.observe(year2017Ref.current);
-    observer.observe(year2016Ref.current);
-    observer.observe(year2015Ref.current);
+    sections.forEach((section) => {
+      sectionRefs[section.id] = document.getElementById(section.id);
+      observer.observe(sectionRefs[section.id]);
+    });
 
     return () => {
       observer.disconnect();
@@ -109,44 +92,15 @@ function App() {
   }, []);
 
   return (
-
     // The navbar and the content
     <div className="container">
       <Navbar activePage={activePage} handlePageClick={handlePageClick} />
       <div className="content">
-        <div className="section" ref={aboutRef} id="about">
-          <About />
-        </div>
-        <div className="section" ref={beatsRef} id="beats">
-          <Beats />
-        </div>
-        <div className="section" ref={contactRef} id="contact">
-          <Contact />
-        </div>
-        <div className="section" ref={discographyRef} id="discography">
-          <Discography />
-        </div>
-        <div className="section" ref={year2021Ref} id="year-2021">
-          <Year2021 />
-        </div>
-        <div className="section" ref={year2020Ref} id="year-2020">
-          <Year2020 />
-        </div>
-        <div className="section" ref={year2019Ref} id="year-2019">
-          <Year2019 />
-        </div>
-        <div className="section" ref={year2018Ref} id="year-2018">
-          <Year2018 />
-        </div>
-        <div className="section" ref={year2017Ref} id="year-2017">
-          <Year2017 />
-        </div>
-        <div className="section" ref={year2016Ref} id="year-2016">
-          <Year2016 />
-        </div>
-        <div className="section" ref={year2015Ref} id="year-2015">
-          <Year2015 />
-        </div>
+        {sections.map((section) => (
+          <div className="section" id={section.id} key={section.id} ref={(el) => (sectionRefs[section.id] = el)}>
+            {section.component}
+          </div>
+        ))}
       </div>
     </div>
   );
