@@ -1,0 +1,42 @@
+@media (prefers-color-scheme: light) {
+  .navbar {
+    color: #191919;
+    background-color: #ffffff;
+  }
+
+  .nav-item a {
+    color: #191919;
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  color: #fff;
+  background-color: #191919;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-family: "Benzin Bold", sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.nav-item a:hover {
+  color: #ff0000;
+}
